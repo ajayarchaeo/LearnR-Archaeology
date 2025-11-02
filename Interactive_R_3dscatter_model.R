@@ -11,7 +11,7 @@ library(plotly) # Load the package for interactive graphs
 
 # !!! IMPORTANT: Ensure the file path is correct and accessible in your R environment !!!
 # (Keep your file path here)
-file_path <- "/Users/shamili/Documents/Dummy.csv"
+file_path <- "/Users/NAME/Documents/Dummy.csv"
 data <- read_csv(file_path)
 
 # --- 3. Data Preparation for Grouping (Simplified for Plotly) ---

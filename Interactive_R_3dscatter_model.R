@@ -3,6 +3,7 @@
 # Uncomment and run the following lines if you don't have the packages installed:
 # install.packages("readr")
 install.packages("plotly") 
+install.packages("readr")
 
 library(readr)
 library(plotly) # Load the package for interactive graphs
@@ -11,14 +12,19 @@ library(plotly) # Load the package for interactive graphs
 
 # !!! IMPORTANT: Ensure the file path is correct and accessible in your R environment !!!
 # (Keep your file path here)
-file_path <- "/Users/NAME/Documents/Dummy.csv"
-data <- read_csv(file_path)
+# --- 2. Read the Data ---
+
+file_path <- "C:/Users/Cyntexia/Documents/Dummy.csv" # Ensure this path is correct!
+my_data <- read_csv(file_path) # <--- Variable name changed to my_data
 
 # --- 3. Data Preparation for Grouping (Simplified for Plotly) ---
 
 # Create a unique grouping column by combining 'Artefact' and 'Materials'
 # Plotly can use this factor column directly for coloring.
-data$Group <- interaction(data$Artefact, data$Materials)
+# --- 3. Data Preparation for Grouping (Simplified for Plotly) ---
+
+# Create a unique grouping column by combining 'Artefact' and 'Materials'
+my_data$Group <- interaction(my_data$Artefact, my_data$Materials) # Changed 'data' to 'my_data'
 
 
 # --- 4. Interactive 3D Scatter Plot Generation using Plotly ---
@@ -27,8 +33,10 @@ data$Group <- interaction(data$Artefact, data$Materials)
 # Plotly automatically handles grouping and coloring based on the 'color' argument,
 # and generates an interactive legend and hover text.
 
+# --- 4. Interactive 3D Scatter Plot Generation using Plotly ---
+
 plot_ly(
-  data, 
+  my_data, 
   x = ~x, 
   y = ~y, 
   z = ~z, 
@@ -37,7 +45,7 @@ plot_ly(
   mode = "markers",  # Plot points as markers
   marker = list(size = 5) # Adjust point size for better visibility
 ) %>%
-  # Add layout details (title and axis labels)
+  
   layout(
     title = "Interactive 3D Scatter Plot Grouped by Artefact and Materials",
     scene = list(
@@ -46,6 +54,8 @@ plot_ly(
       zaxis = list(title = "Z")
     )
   )
+
+# ... (rest of the layout)
 
 # The resulting graph is interactive!
 # * Rotate: Click and drag the plot.
